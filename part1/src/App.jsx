@@ -1,21 +1,49 @@
-const Hello = (props) => {
-  console.log(props)
+const Header = () =>{
+  return (
+  <div>
+    <h1>Half Stack application development</h1> 
+  </div>
+  )
+}
+
+const Part = (props) => {
   return (
     <div>
-      <p>Hello {props.name}, you are {props.age} years old</p>
+      <p>{props.part.name} {props.part.exercises}</p>
+    </div>
+  )
+}
+
+const Content = (props) => {
+  return(
+    <div>
+      <Part part={props.parts[0]}/>
+      <Part part={props.parts[1]}/>
+      <Part part={props.parts[2]}/>
+    </div>
+  )
+}
+const Total = (props) => {
+  return (
+    <div>
+      <p>Number of exercises {props.total}</p>
     </div>
   )
 }
 
 const App = () => {
-  const nimi = "Pekka"
-  const ika = 10
+  const parts = [
+    {name: 'Fundamentals of React', exercises: 10},
+    {name: 'Using props to pass data', exercises: 7},
+    {name: 'State of a component', exercises: 14}
+  ]
+
 
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name ="Hertta" age ={20 + 3}/>
-      <Hello name={nimi} age={ika} />
+      <Header />
+      <Content parts={parts}/>
+      <Total total={parts[0].exercises + parts[1].exercises + parts[2].exercises}/>
     </div>
   )
 }
